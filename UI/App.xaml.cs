@@ -23,7 +23,6 @@ namespace UI
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class App : Application
     {
         /// <inheritdoc />
