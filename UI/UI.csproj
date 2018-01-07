@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,8 +102,44 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Framework\AdditionalKinds.cs" />
+    <Compile Include="Framework\AppExecutionState.cs" />
+    <Compile Include="Framework\ApplicationState.cs" />
+    <Compile Include="Framework\BackButton.cs" />
+    <Compile Include="Framework\Bootstrapper.cs" />
+    <Compile Include="Framework\Caching\CachingService.cs" />
+    <Compile Include="Framework\Caching\ICachingService.cs" />
+    <Compile Include="Framework\Caching\Strategies\DefaultCachingService.cs" />
+    <Compile Include="Framework\Deferral.cs" />
+    <Compile Include="Framework\DeferralManager.cs" />
+    <Compile Include="Framework\Display\ActivateWindowSources.cs" />
+    <Compile Include="Framework\Display\SplashLogic.cs" />
+    <Compile Include="Framework\Display\WindowLogic.cs" />
+    <Compile Include="Framework\ExistingContent.cs" />
+    <Compile Include="Framework\HandledEventArgs.cs" />
+    <Compile Include="Framework\LifecycleLogic.cs" />
+    <Compile Include="Framework\Logging\ILoggingService.cs" />
+    <Compile Include="Framework\Logging\Strategies\DefaultLoggingService.cs" />
+    <Compile Include="Framework\Logging\Severities.cs" />
+    <Compile Include="Framework\Logging\Targets.cs" />
+    <Compile Include="Framework\Navigation\FrameFacade.cs" />
+    <Compile Include="Framework\Navigation\INavigable.cs" />
+    <Compile Include="Framework\Navigation\INavigationService.cs" />
+    <Compile Include="Framework\Navigation\NavigatedEventArgs.cs" />
+    <Compile Include="Framework\Navigation\NavigatingEventArgs.cs" />
+    <Compile Include="Framework\Serialization\ISerializationService.cs" />
+    <Compile Include="Framework\Serialization\JsonSerializationService.cs" />
+    <Compile Include="Framework\Serialization\SerializationService.cs" />
+    <Compile Include="Framework\StartKind.cs" />
+    <Compile Include="Framework\TypedEventHandler.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationProperties.cs" />
+    <Compile Include="Navigation\NavigationViewExtended.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -111,6 +147,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="UI.ruleset" />
     <None Include="UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +156,9 @@
     <Content Include="Assets\BadgeLogo.scale-150.png" />
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\Icons\baseball.png" />
+    <Content Include="Assets\Icons\hockey.png" />
+    <Content Include="Assets\Icons\nhl.svg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -170,13 +210,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.4.0</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Framework\Settings\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

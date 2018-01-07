@@ -17,12 +17,14 @@ namespace UI
     using Windows.ApplicationModel.Activation;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Data;
     using Windows.UI.Xaml.Navigation;
 
     /// <inheritdoc cref="Application" />
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
+    [Bindable]
     public sealed partial class App : Application
     {
         /// <inheritdoc />
